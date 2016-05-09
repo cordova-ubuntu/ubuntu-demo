@@ -1,0 +1,71 @@
+[data-role="tab"] {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.5rem;
+}
+
+[data-role="content"] p {
+  margin-bottom: .5rem;
+}
+
+[data-role="content"] h1 {
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+[data-role="content"] h2 {
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+
+[data-role="content"] h3 {
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+
+[data-role="content"] ul {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  list-style: disc;
+  margin-bottom: .5rem;
+  margin-left: 15px;
+}
+
+a:link, a:visited {
+    color: #DD4814;
+    text-decoration: none;
+}
+
+div.toc {
+    display: none;
+}
+
+/* Disable this when the app container
+   properly supports tab scrolling.
+   We hardcode support for showing
+   8 tabs (50px each) */
+[data-role="tabs"] {
+  max-height: 400px !important;
+}
+
+/* Improve the layout of the list of pages inside the pagestack */
+[data-role="pagestack"] > [data-role="page"]:first-child {
+    padding: 0;
+}
+
+[data-role="list"] header {
+  display: none;
+}
+
+[data-role="list"] ul {
+  margin-left: 0;
+}
+
+[data-role="list"] > header + ul li {
+  padding-left: 0;
+}
+
+/* Extend the page stack header to the right */
+[data-role="back-btn"]:disabled + [data-role="tabtitle"], [data-role="back-btn"] + [data-role="tabtitle"], [data-role="tabs-btn"] + [data-role="tabtitle"], [data-role="tabs"] + [data-role="tabtitle"] {
+  width: calc(100% - 40px);
+}

@@ -1,0 +1,14 @@
+Instructions for preparing the app to build
+-------------------------------------------
+
+cordova platform add ubuntu
+cordova plugin add cordova-plugin-camera
+cordova plugin add cordova-plugin-device
+cordova plugin add cordova-plugin-device-motion
+cordova plugin add cordova-plugin-geolocation
+cordova plugin add cordova-plugin-vibration
+
+Building and running
+--------------------
+
+cordova run --device --debug

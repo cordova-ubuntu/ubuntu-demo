@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hello World</title>
+
+    <!-- Ubuntu UI Style imports - Ambiance theme -->
+    <link href="ambiance/css/appTemplate.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+
+    <!-- Ubuntu UI javascript imports - Ambiance theme -->
+    <script src="ambiance/js/core.js"></script>
+    <script src="ambiance/js/page.js"></script>
+    <script src="ambiance/js/list.js"></script>
+    <script src="ambiance/js/pagestacks.js"></script>
+    <script src="ambiance/js/tab.js"></script>
+    <script src="ambiance/js/tabs.js"></script>
+
+    <style>
+[data-role="page"] {
+      padding: 2em 2em 2em 2em;
+}
+        #accelerometer-canvas {
+            width: 200px;
+            height: 200px;
+
+            border: 5px solid #ddd;
+            border-radius: 10px;
+            -moz-border-radius: 10px;
+        }
+
+        #middle {
+            background-color: #aaa;
+            position: relative;
+            width: 4px;
+            height: 4px;
+            left: 98px;
+            top: 98px;
+        }
+
+        #ball {
+            background-color: green;
+            position: relative;
+            width: 20px;
+            height: 20px;
+            left: 90px;
+            top: 90px;
+
+            border-radius: 20px;
+            -moz-border-radius: 20px;
+
+            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+            -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+            -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+
+            background-image: -moz-linear-gradient(top, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0) 12px);
+            background-image: -webkit-gradient(linear, 0 0, 0 12, from(rgba(255, 255, 255, .5)), to(rgba(255, 255, 255, 0)));
+        }
+
+#earth {
+  width: 150px;
+  height: 150px;
+  background: url(http://www.noirextreme.com/digital/Earth-Color4096.jpg);
+  border-radius: 50%;
+  background-size: 610px;
+  box-shadow: inset 8px 36px 80px 36px rgb(0, 0, 0), inset -6px 0 12px 4px rgba(255, 255, 255, 0.3);
+  animation-name: rotate;
+  animation-duration: 12s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  -webkit-animation-name: rotate;
+ -webkit-animation-duration: 12s;
+ -webkit-animation-iteration-count: infinite;
+ -webkit-animation-timing-function: linear;
+}
+@keyframes rotate {
+  from {
+    background-position: 0px 0px;
+  }
+  to {
+    background-position: 610px 0px;
+  }
+}
+@-webkit-keyframes rotate {
+  from {
+    background-position: 0px 0px;
+  }
+  to {
+    background-position: 610px 0px;
+  }
+}
+
+hr.style-one {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
+    background-image:    -moz-linear-gradient(left, #ccc, #333, #ccc);
+    background-image:     -ms-linear-gradient(left, #ccc, #333, #ccc);
+    background-image:      -o-linear-gradient(left, #ccc, #333, #ccc);
+}    </style>
+    
+  </head>
+  <body style="height:100%">
+
+    <div data-role="mainview">
+      
+      <header data-role="header">
+      </header>
+
+      <div data-role="content">
+	<div data-role="pagestack">
+
+          <div data-role="page" id="main" data-title="Ubuntu Cordova Demo">
+            <section data-role="list" id="plugins"></section>
+          </div>
+          
+          <div data-role="page" id="plugin-pg" data-title="Cordova">
+
+            <div id="deviceready" class="blink" style="text-align: center">
+              <p class="event listening" style="text-align: center">Connecting to Device</p>
+              <p class="event received" style="text-align: center">Device is Ready</p>
+            </div>
+
+	    <div id="info" style="padding-top: 2em;" align="center">
+              <div>
+                Version: <span id="cordova"> </span>
+              </div>
+              <div>
+	        Platform: <span id="platform">  </span>
+              </div>
+              <div>
+	        Version: <span id="version"> </span>
+              </div>
+              <div>
+	        UUID: <span id="uuid">  </span>
+              </div>
+              <div>
+	        Model: <span id="model"> </span>
+              </div>
+	    </div>
+	  </div>
+
+          <div data-role="page" id="plugin-vibrate" data-title="Vibrate">
+            <div style="">
+              <input id="count" type="number" placeholder="Time in ms" style="margin-left: auto; margin-right: auto; display: block;" value="1000"></input>
+              <div style="padding-bottom: 2em; padding-top: 2em"></div>
+              <button id="vibrate" data-role="button" style="margin-left: auto; margin-right: auto; display: block;" value="Vibrate !">Vibrate !</button>
+            </div>
+	  </div>
+          
+          <div data-role="page" id="plugin-gps" data-title="GPS">
+	    <div id="info-gps" style="padding-top: 2em; padding-bottom: 2em;" align="center">
+              <div>
+                Latitude: <span id="lat"> </span>
+              </div>
+              <div>
+	        Longitude: <span id="long">  </span>
+              </div>
+              <div>
+	        Altitude: <span id="altitude"> </span>
+              </div>
+              <div>
+	        Accuracy: <span id="accuracy">  </span>
+              </div>
+	    </div>
+            <div id="earth" style="margin-left: auto; margin-right: auto; display: block;"></div>
+	  </div>
+          
+          <div data-role="page" id="plugin-accelerometer" data-title="Accelerometer">
+            <div id="accelerometer-canvas" style="margin-left: auto; margin-right: auto; display: block">
+              <div id="middle"></div>
+              <div id="ball"></div>
+            </div>
+            <div id="accel-msg"></div>
+	  </div>
+          
+          <div data-role="page" id="plugin-camera" data-title="Camera">
+            <div style="padding-bottom: 3em;">
+              <img style="margin-left: auto; margin-right: auto; display: block" id="take-photo" src="/usr/share/icons/ubuntu-mobile/apps/symbolic/camera-symbolic.svg"></img>
+            </div>
+            <hr class="style-one" style="width: 50%;"/>
+            <div id="photo" style="padding-top: 1em">
+              <img style="width: 200px; height: 200px; margin-left: auto; margin-right: auto; display: block"/>
+            </div>
+	  </div>
+          
+	</div>
+      </div> <!-- content -->
+</div> <!-- mainview -->
+
+<script>
+        var UI = new UbuntuUI();
+        window.onload = function() {
+          UI.init();
+          UI.pagestack.push("main");
+         
+          var plugins = UI.list('#plugins');
+          plugins.removeAllItems();
+          plugins.setHeader("Plugins");
+
+          plugins.append("Cordova",
+            null,
+            null,
+            function (target, result_infos) {
+              UI.pagestack.push("plugin-pg");
+            });
+          plugins.append("GPS",
+            null,
+            null,
+            function (target, result_infos) {
+              UI.pagestack.push("plugin-gps");
+              geolocation.start();
+            });
+          plugins.append("Accelerometer",
+            null,
+            null,
+            function (target, result_infos) {
+              UI.pagestack.push("plugin-accelerometer");
+              accelerometer.start();
+            });
+          plugins.append("Vibration",
+            null,
+            null,
+            function (target, result_infos) {
+               UI.pagestack.push("plugin-vibrate");
+               vibrate.start();
+            });
+          plugins.append("Camera",
+            null,
+            null,
+            function (target, result_infos) {
+               UI.pagestack.push("plugin-camera");
+               camera.start();
+            });
+        };
+    </script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/vibrate.js"></script>
+    <script type="text/javascript" src="js/geolocation.js"></script>
+    <script type="text/javascript" src="js/accelerometer.js"></script>
+    <script type="text/javascript" src="js/camera.js"></script>
+   </body>
+</html>
