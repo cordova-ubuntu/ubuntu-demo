@@ -36,6 +36,19 @@
     <script src="ambiance/js/tab.js"></script>
     <script src="ambiance/js/tabs.js"></script>
 
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-widget.min.js"></script>
+    <script type="text/javascript" src="js/d3.min.js"></script>
+    <script type="text/javascript" src="js/jke-d3-ecg.min.js"></script>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/vibrate.js"></script>
+    <script type="text/javascript" src="js/geolocation.js"></script>
+    <script type="text/javascript" src="js/accelerometer.js"></script>
+    <script type="text/javascript" src="js/camera.js"></script>
+    
     <style>
 [data-role="page"] {
       padding: 2em 2em 2em 2em;
@@ -205,61 +218,24 @@ hr.style-one {
             </div>
 	  </div>
           
+          <div data-role="page" id="plugin-ble" data-title="Bluetooth BLE">
+            <div style="">
+	      <section data-role="list" id="sensortags">
+	      </section>
+              <hr class="style-one" style="width: 50%;"/>
+              <div class="jke-ecgChart"></div>
+
+	      <div style="padding-top: 2em;" align="center">
+		<span id="ble-status"></span>
+	      </div>
+            </div>
+	  </div>
+
 	</div>
       </div> <!-- content -->
 </div> <!-- mainview -->
 
-<script>
-        var UI = new UbuntuUI();
-        window.onload = function() {
-          UI.init();
-          UI.pagestack.push("main");
-         
-          var plugins = UI.list('#plugins');
-          plugins.removeAllItems();
-          plugins.setHeader("Plugins");
-
-          plugins.append("Cordova",
-            null,
-            null,
-            function (target, result_infos) {
-              UI.pagestack.push("plugin-pg");
-            });
-          plugins.append("GPS",
-            null,
-            null,
-            function (target, result_infos) {
-              UI.pagestack.push("plugin-gps");
-              geolocation.start();
-            });
-          plugins.append("Accelerometer",
-            null,
-            null,
-            function (target, result_infos) {
-              UI.pagestack.push("plugin-accelerometer");
-              accelerometer.start();
-            });
-          plugins.append("Vibration",
-            null,
-            null,
-            function (target, result_infos) {
-               UI.pagestack.push("plugin-vibrate");
-               vibrate.start();
-            });
-          plugins.append("Camera",
-            null,
-            null,
-            function (target, result_infos) {
-               UI.pagestack.push("plugin-camera");
-               camera.start();
-            });
-        };
+    <script>
     </script>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript" src="js/vibrate.js"></script>
-    <script type="text/javascript" src="js/geolocation.js"></script>
-    <script type="text/javascript" src="js/accelerometer.js"></script>
-    <script type="text/javascript" src="js/camera.js"></script>
    </body>
 </html>

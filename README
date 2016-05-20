@@ -2,13 +2,15 @@ Instructions for preparing the app to build
 -------------------------------------------
 
 cordova platform add ubuntu
-cordova plugin add cordova-plugin-camera
-cordova plugin add cordova-plugin-device
-cordova plugin add cordova-plugin-device-motion
-cordova plugin add cordova-plugin-geolocation
-cordova plugin add cordova-plugin-vibration
+cordova plugin add https://github.com/apache/cordova-plugin-compat.git
+cordova plugin add https://github.com/apache/cordova-plugin-camera.git
+cordova plugin add https://github.com/apache/cordova-plugin-device.git
+cordova plugin add https://github.com/apache/cordova-plugin-device-motion.git
+cordova plugin add https://github.com/cordova-ubuntu/cordova-plugin-geolocation.git
+cordova plugin add https://github.com/cordova-ubuntu/cordova-plugin-ble-central.git
+cordova plugin add https://github.com/cordova-ubuntu/cordova-plugin-vibration.git
 
 Building and running
 --------------------
 
-cordova run --device --debug
+cordova run --device -- --debug
