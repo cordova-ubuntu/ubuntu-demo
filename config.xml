@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="cordova-ubuntu-demo.dbarth" version="0.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>CordovaUbuntuDemo</name>
+<widget id="ubuntu-demo.cordova" version="0.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Cordova Ubuntu Demo</name>
     <description>
         A sample Apache Cordova demo application for Ubuntu.
     </description>
