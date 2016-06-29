@@ -1,7 +1,7 @@
 Instructions for preparing the app to build
 -------------------------------------------
 
-cordova platform add ubuntu
+cordova platform add ubuntu@4.3.4
 cordova plugin add https://github.com/apache/cordova-plugin-compat.git
 cordova plugin add https://github.com/apache/cordova-plugin-camera.git
 cordova plugin add https://github.com/apache/cordova-plugin-device.git
